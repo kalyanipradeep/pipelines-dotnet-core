@@ -25,3 +25,15 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish -c Release -o website
+    - name: Upload artifact for deployment job
+  uses: actions/upload-artifact@v2.3.1
+  with:
+    name: webapp
+    path: website/**
+    if-no-files-found: warn
+
+  if-no-files-found: # optional, default is warn
+    # Duration after which artifact will expire in days. 0 means using default retention.
+Minimum 1 day. Maximum 90 days unless changed from the repository settings page.
+
+    retention-days: # optional
